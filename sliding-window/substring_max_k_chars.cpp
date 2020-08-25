@@ -1,3 +1,11 @@
+// Grokking interview patterns [medium]
+/* Longest Substring with At Most K Distinct Characters
+Given a string S, find the length of the longest substring T that contains at most k distinct characters.
+Input: S = "eceba" and k = 3
+Output: 4
+Explanation: T = "eceb" */
+
+
 using namespace std;
 
 #include <iostream>
