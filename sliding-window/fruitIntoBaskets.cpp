@@ -9,6 +9,17 @@
 
 class Solution {
 public:
+    void minimizeMap(unordered_map<int,int> &currFruits, int &tail, int &currNum){
+        unordered_map<int,int>::iterator it;
+        currFruits[tree[tail]]--;
+        it = currFruits.find(tree[tail]);
+        if(currFruits[tree[tail]] == 0 ){
+            currFruits.erase(it);                    
+        }
+        tail++;
+        currNum--;
+    }
+
     int totalFruit(vector<int>& tree) {
         int currNum = 0;
         int maxNum = 0;
@@ -20,13 +31,7 @@ public:
             currFruits[tree[i]]++;
             it = currFruits.find(tree[tail]);
             while(currFruits.size() > 2 && tail < i){ 
-                currFruits[tree[tail]]--;
-                it = currFruits.find(tree[tail]);
-                if(currFruits[tree[tail]] == 0 ){
-                    currFruits.erase(it);                    
-                }
-                tail++;
-                currNum--;
+                minimizeMap(currFruits, tail, currNum);
             }
             currNum++;
             maxNum = max(currNum, maxNum);
